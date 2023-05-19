@@ -1,0 +1,18 @@
+{
+  "name": "node-.js-project1-weatherapp",
+  "version": "1.0.0",
+  "description": "a weather app project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "NODE-.JS-PROJECT1-WEATHERAPP"
+  },
+  "author": "BenHmida mohamed aziz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
