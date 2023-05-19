@@ -1,0 +1,4 @@
+// design part
+
+we have day on and off so we can make the background color change depends on this variable
+we have icons of how's the weather out side
