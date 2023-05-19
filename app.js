@@ -17,8 +17,16 @@ const forecast = require("./utils/forecast.js");
 //   }
 // });
 
-geocode("tunis", (error, data) => {
+const arg=process.argv[2];
+
+if(!arg){
+    console.log("Please add a city");
+}
+else{
+geocode(arg, (error, data) => {
+    if(error){
+        return console.log(error)
+    }
   forecast(error, data);
-  console.log("Error:", error);
-  console.log("Data:", data);
 });
+}
