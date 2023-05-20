@@ -2,15 +2,19 @@ const express = require("express");
 const path = require("path");
 const geocode = require("./utils/geocode.js");
 const forecast = require("./utils/forecast.js");
+const hbs = require("hbs");
 
 const app = express();
 
-console.log(__dirname);
-console.log(path.join(__dirname, "./public"));
-
+//Define paths for Express config
 const publicDir = path.join(__dirname, "./public");
-
+const viewsPath = path.join(__dirname, "./templates/views");
+const partialsPath = path.join(__dirname, "./templates/partials");
+//Setup handlebars engine and views lcoation
 app.set("view engine", "hbs");
+app.set("views", viewsPath);
+hbs.registerPartials(partialsPath);
+//setup static directory to serve
 app.use(express.static(publicDir));
 
 app.get("", (req, res) => {
@@ -31,6 +35,7 @@ app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
     name: "Med Aziz benhmida",
+    helpText: "this is some helpful text.",
   });
 });
 
