@@ -6,18 +6,34 @@ const forecast = require("./utils/forecast.js");
 const app = express();
 
 console.log(__dirname);
-console.log(path.join(__dirname,'./public'));
+console.log(path.join(__dirname, "./public"));
 
-const publicDir=path.join(__dirname,'./public')
+const publicDir = path.join(__dirname, "./public");
 
-app.use(express.static(publicDir))
+app.set("view engine", "hbs");
+app.use(express.static(publicDir));
+
 app.get("", (req, res) => {
-  res.send("<h1> Weather</h1>");
+  res.render("index", {
+    title: "Weather App",
+    name: "Med Aziz benhmida",
+  });
 });
 
 app.get("/about", (req, res) => {
-  res.send("<h1> About </h1>");
+  res.render("about", {
+    title: "About Me",
+    name: "Med Aziz benhmida",
+  });
 });
+
+app.get("/help", (req, res) => {
+  res.render("help", {
+    title: "Help",
+    name: "Med Aziz benhmida",
+  });
+});
+
 app.get("/weather", (req, res) => {
   res.send({
     forecast: "It is snowing",
