@@ -47,7 +47,9 @@ app.get("/weather", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.render("not_found");
+  res.render("not_found", {
+    text: "page not found try something else or contact us on : kwimm04@gmail.com",
+  });
 });
 app.listen(3000, () => {
   console.log("server is up on port 3000");

@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/not_found.css" />
     <script src="./js/app.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,21 +9,19 @@
     <title>Page Not Found</title>
   </head>
   <body>
+    {{>header}}
     <div class="notFound">
     <img src="/img/page-not-found.svg" alt="Page Not Found" />
     <div class="wrapper">
       <h1>Page Not Found</h1>
 
       <p class="message">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt nisi
-        cumque explicabo quas aliquam perferendis vitae! Quo laborum
-        necessitatibus alias officiis non! Dolor quas quos a. Tempore voluptates
-        quibusdam quam.
-
+     {{text}}
       </p>
       <a href="#" class="btn">Learn More</a>
       <p class="copyRights">&copy; 2023 Med Aziz ben hmida</p>
     </div>
 </div>
+
   </body>
 </html>
