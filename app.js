@@ -45,6 +45,10 @@ app.get("/weather", (req, res) => {
     location: "Tunis",
   });
 });
+
+app.get("*", (req, res) => {
+  res.render("not_found");
+});
 app.listen(3000, () => {
   console.log("server is up on port 3000");
 });
