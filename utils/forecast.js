@@ -1,8 +1,8 @@
 const request = require("request");
 
-const forecast = (error, coord) => {
+const forecast = (error, coord, callback) => {
   if (error) {
-    console.log("eeror occured !");
+    callback("Unable to connect to weather service!", undefined);
   } else {
     const url =
       "http://api.weatherapi.com/v1/current.json?key=a1e87be597284d5f921184854231905&q=" +
@@ -10,14 +10,18 @@ const forecast = (error, coord) => {
       "," +
       coord.long;
 
-    request({ url: url, json: true }, (error, {body}) => {
+    request({ url: url, json: true }, (error, { body }) => {
       if (error) {
-        console.log("Unable to connect to the server!");
+        callback("Unable to connect to weather service!", undefined);
       } else if (body.error) {
-        console.log("Unable to find location!");
+        callback("Unable to find location", undefined);
       } else {
-        console.log(
-          `its currently ${body.current.temp_c} degree c. it's ${body.current.condition.text} outside `
+        callback(
+          undefined,
+          " It is currently " +
+            body.current.temp_c +
+            " degress out. There is a " +
+            body.current.condition.text 
         );
       }
     });

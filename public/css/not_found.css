@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 120vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,5 +38,5 @@
 }
 .copyRights {
   margin-top: 60px;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
 }

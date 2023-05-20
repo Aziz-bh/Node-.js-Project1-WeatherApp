@@ -31,6 +31,16 @@ app.get("/about", (req, res) => {
   });
 });
 
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send({ error: "error u must provide a search term" });
+  }
+  console.log(req.query);
+  res.send({
+    products: [],
+  });
+});
+
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
@@ -40,9 +50,24 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  res.send({
-    forecast: "It is snowing",
-    location: "Tunis",
+  if (!req.query.address) {
+    return res.send({ error: " error, you must provide an address" });
+  }
+
+  geocode(req.query.address, (error, coord) => {
+    if (error) {
+      return res.send({ error: " error" });
+    }
+    forecast(error, coord, (error, data) => {
+      if (error) {
+        return res.send({ error: " error" });
+      }
+      res.send({
+        forecast: data,
+        location: coord.location,
+        address: req.query.address,
+      });
+    });
   });
 });
 
